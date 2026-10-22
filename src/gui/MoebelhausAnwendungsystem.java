@@ -16,7 +16,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import ownUtil.*;
 
-public class MoebelAnwendersystem {
+public class MoebelhausAnwendungsystem {
       
     //---Anfang Attribute der grafischen Oberflaeche---
     private Pane pane               = new Pane();
@@ -45,7 +45,7 @@ public class MoebelAnwendersystem {
     // speichert temporaer ein Objekt vom Typ Moebelstueck
     private Moebelstueck moebelstueck;
     
-    public MoebelAnwendersystem(Stage primaryStage){
+    public MoebelhausAnwendungsystem(Stage primaryStage){
         Scene scene = new Scene(this.pane, 700, 340);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Verwaltung von Möbeln");

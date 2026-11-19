@@ -29,7 +29,7 @@ public class MoebelhausControl {
 
 	public void leseAusDatei(String typ) {
 		try {
-			if ("csv".equals(typ)) {
+			if ("csv".equals(typ) || "txt".equals(typ)) {
 				this.model.leseAusDatei(typ);
 				this.view.zeigeInformationsfensterAn("Die Moebelstueck wurde gelesen!");
 			} else {

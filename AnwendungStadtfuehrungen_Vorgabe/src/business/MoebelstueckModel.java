@@ -6,9 +6,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import fileCreatorsDaoud.ConcreteCreatorAB;
+import fileCreatorsDaoud.ReaderCreatorDaoud;
+import fileCreatorsDaoud.ReaderProductDaoud;
+
 public class MoebelstueckModel {
 
-	// speichert temporaer ein Objekt vom Typ Moebelstueck
 	private Moebelstueck moebelstueck;
 
 	public MoebelstueckModel() {
@@ -24,16 +27,21 @@ public class MoebelstueckModel {
 
 	public void leseAusDatei(String typ) throws IOException, Exception {
 
-		if ("csv".equals(typ)) {
-			BufferedReader ein = new BufferedReader(new FileReader("Moebelstueck.csv"));
-			String[] zeile = ein.readLine().split(";");
-			this.moebelstueck = new Moebelstueck(zeile[0], zeile[1], zeile[2], Float.parseFloat(zeile[3]),
-					zeile[4].split("_"));
-			ein.close();
-
-		} else {
+		if (!"csv".equals(typ) && !"txt".equals(typ)) {
 			throw new Exception("Noch nicht implementiert!");
+
 		}
+
+		ReaderCreatorDaoud creator = new ConcreteCreatorAB();
+
+		ReaderProductDaoud reader = creator.factoryMethod(typ);
+		String[] zeile = reader.leseAusDatei();
+
+		this.moebelstueck = new Moebelstueck(zeile[0], zeile[1], zeile[2], Float.parseFloat(zeile[3]),
+				zeile[4].split("_"));
+
+		reader.schliesseDatei();
+
 	}
 
 	public void schreibeMoebelstueckeInCsvDatei() throws Exception {

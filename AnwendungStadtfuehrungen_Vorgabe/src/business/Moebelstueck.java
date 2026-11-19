@@ -2,15 +2,15 @@ package business;
 
 public class Moebelstueck {
     
-    // Name des Möbelstücks
+   
     private String name;
-    // Wohnraum (z. B. Wohnzimmer, Schlafzimmer)
+   
     private String wohnraum;
-    // Stil des Möbelstücks
+  
     private String stil;
-    // Preis des Möbelstücks
+    
     private float preis;
-    // Materialien des Möbelstücks
+   
     private String[] materialien;
 
     public Moebelstueck(String name, String wohnraum, String stil,

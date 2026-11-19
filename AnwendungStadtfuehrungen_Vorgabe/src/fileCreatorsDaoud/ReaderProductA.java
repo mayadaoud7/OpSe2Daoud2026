@@ -9,16 +9,13 @@ public class ReaderProductA extends ReaderProductDaoud {
 	private BufferedReader reader;
 
 	public ReaderProductA() throws IOException {
-		reader = new BufferedReader(new FileReader("Moebelstueck.csv"));
+		reader = new BufferedReader(new FileReader("Moebelstuecke.csv"));
 	}
 
 	@Override
 	public String[] leseAusDatei() throws IOException {
-		String zeile = reader.readLine();
-		if (zeile != null) {
-			return zeile.split(";");
-		}
-		return null;
+		String[] zeile = reader.readLine().split(";");
+		return zeile;
 	}
 
 	@Override

@@ -1,8 +1,6 @@
 package business;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -14,6 +12,9 @@ public class MoebelstueckModel {
 
 	private Moebelstueck moebelstueck;
 
+	private ReaderCreatorDaoud creator;
+	private ReaderProductDaoud product; 
+	
 	public MoebelstueckModel() {
 	}
 
@@ -27,20 +28,15 @@ public class MoebelstueckModel {
 
 	public void leseAusDatei(String typ) throws IOException, Exception {
 
-		if (!"csv".equals(typ) && !"txt".equals(typ)) {
-			throw new Exception("Noch nicht implementiert!");
 
-		}
+		creator = new ConcreteCreatorAB();
 
-		ReaderCreatorDaoud creator = new ConcreteCreatorAB();
+		product = creator.factoryMethod(typ);
+		String[] zeile = product.leseAusDatei();
 
-		ReaderProductDaoud reader = creator.factoryMethod(typ);
-		String[] zeile = reader.leseAusDatei();
+		this.moebelstueck = new Moebelstueck(zeile[0], zeile[1], zeile[2], Float.parseFloat(zeile[3]), zeile[4].split("_"));
 
-		this.moebelstueck = new Moebelstueck(zeile[0], zeile[1], zeile[2], Float.parseFloat(zeile[3]),
-				zeile[4].split("_"));
-
-		reader.schliesseDatei();
+		product.schliesseDatei();
 
 	}
 

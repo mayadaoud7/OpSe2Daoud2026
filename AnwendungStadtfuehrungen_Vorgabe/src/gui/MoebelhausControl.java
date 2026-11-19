@@ -29,28 +29,28 @@ public class MoebelhausControl {
 
 	public void leseAusDatei(String typ) {
 		try {
-			if ("csv".equals(typ) || "txt".equals(typ)) {
-				this.model.leseAusDatei(typ);
-				this.view.zeigeInformationsfensterAn("Die Moebelstueck wurde gelesen!");
-			} else {
-				this.view.zeigeInformationsfensterAn("Noch nicht implementiert!");
-			}
+
+			model.leseAusDatei(typ);
+			view.zeigeInformationsfensterAn("Die Moebelstueck wurde gelesen!");
+
+
 		} catch (IOException exc) {
-			this.view.zeigeFehlermeldungsfensterAn("IOException beim Lesen!");
+			view.zeigeFehlermeldungsfensterAn("IOException beim Lesen!");
+
 		} catch (Exception exc) {
-			this.view.zeigeFehlermeldungsfensterAn("Unbekannter Fehler beim Lesen!");
+			view.zeigeFehlermeldungsfensterAn("Unbekannter Fehler beim Lesen!");
 		}
 	}
 
 	public void schreibeMoebelstueckeInCsvDatei() {
 		try {
 
-			this.model.schreibeMoebelstueckeInCsvDatei();
-			this.view.zeigeInformationsfensterAn("Die Moebelstuecke wurden gespeichert!");
+			model.schreibeMoebelstueckeInCsvDatei();
+			view.zeigeInformationsfensterAn("Die Moebelstuecke wurden gespeichert!");
 		} catch (IOException exc) {
-			this.view.zeigeFehlermeldungsfensterAn("IOException beim Speichern!");
+			view.zeigeFehlermeldungsfensterAn("IOException beim Speichern!");
 		} catch (Exception exc) {
-			this.view.zeigeFehlermeldungsfensterAn("Unbekannter Fehler beim Speichern!");
+			view.zeigeFehlermeldungsfensterAn("Unbekannter Fehler beim Speichern!");
 		}
 	}
 

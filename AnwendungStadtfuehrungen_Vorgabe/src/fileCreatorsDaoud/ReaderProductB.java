@@ -9,7 +9,7 @@ public class ReaderProductB extends ReaderProductDaoud {
 	private BufferedReader reader;
 
 	public ReaderProductB() throws IOException {
-		reader = new BufferedReader(new FileReader("Moebelstueck.txt"));
+		reader = new BufferedReader(new FileReader("Moebelstuecke.txt"));
 	}
 
 	@Override
